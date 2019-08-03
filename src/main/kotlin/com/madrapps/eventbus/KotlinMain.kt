@@ -1,5 +1,6 @@
 package com.madrapps.eventbus
 
+import com.madrapps.eventbus.type.JavaType
 import com.madrapps.eventbus.type.KotlinType
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -35,6 +36,22 @@ class KotlinMain {
     @Subscribe
     fun kotlinMethod2(type: KotlinType): String? {
         println("kotlinMethod2 executed")
+        return null
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun kotlinMethod3(type: JavaType) {
+        println("kotlinMethod3 executed")
+    }
+
+    @Subscribe
+    fun kotlinMethod4(type: JavaType) {
+        println("kotlinMethod4 executed")
+    }
+
+    @Subscribe
+    fun kotlinMethod5(type: JavaType): String? {
+        println("kotlinMethod5 executed")
         return null
     }
 }

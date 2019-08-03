@@ -12,7 +12,7 @@ public class JavaMain {
     }
 
     private void post() {
-        EventBus bus = EventBus.getDefault();
+        final EventBus bus = EventBus.getDefault();
 
         bus.register(this);
         bus.post(new JavaType());
