@@ -33,6 +33,7 @@ public class JavaMain {
         System.out.println("javaMethod1 executed");
     }
 
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public JavaType javaMethod2(JavaType type) {
         System.out.println("javaMethod2 executed");
@@ -54,4 +55,23 @@ public class JavaMain {
         System.out.println("javaMethod5 executed");
         return null;
     }
+
+    // Wont work - 2 parameters
+    @Subscribe
+    public void javaMethod6(KotlinType type, KotlinType type2) {
+        System.out.println("javaMethod6 executed");
+    }
+
+    // Wont work - not public
+    @Subscribe
+    void javaMethod7(KotlinType type) {
+        System.out.println("javaMethod7 executed");
+    }
+
+    // Wont work - not public
+    @Subscribe
+    protected void javaMethod8(KotlinType type) {
+        System.out.println("javaMethod8 executed");
+    }
+
 }

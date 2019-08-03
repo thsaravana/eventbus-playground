@@ -54,4 +54,22 @@ class KotlinMain {
         println("kotlinMethod5 executed")
         return null
     }
+
+    // Wont work - 2 parameters
+    @Subscribe
+    fun kotlinMethod6(type: JavaType, type2: JavaType) {
+        println("kotlinMethod6 executed")
+    }
+
+    // Wont work - not public
+    @Subscribe
+    private fun kotlinMethod7(type: JavaType) {
+        println("kotlinMethod7 executed")
+    }
+
+    // Wont work - not public
+    @Subscribe
+    protected fun kotlinMethod8(type: JavaType) {
+        println("kotlinMethod8 executed")
+    }
 }
