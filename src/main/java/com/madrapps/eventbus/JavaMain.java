@@ -5,10 +5,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class Main {
+public class JavaMain {
 
     public static void main(String[] args) {
-        new Main().post();
+        new JavaMain().post();
     }
 
     private void post() {
@@ -23,13 +23,18 @@ public class Main {
     // 2. There should be only 1 parameter
     // 3. Can have return type
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void someMethod1(JavaType type) {
-        System.out.println("Java Subscription executed");
+    public void javaMethod(JavaType type) {
+        System.out.println("javaMethod executed");
+    }
+
+    @Subscribe
+    public void javaMethod1(JavaType type) {
+        System.out.println("javaMethod1 executed");
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public JavaType someMethod(JavaType type) {
-        System.out.println("Java Subscription executed with return type");
+    public JavaType javaMethod2(JavaType type) {
+        System.out.println("javaMethod2 executed");
         return null;
     }
 }
