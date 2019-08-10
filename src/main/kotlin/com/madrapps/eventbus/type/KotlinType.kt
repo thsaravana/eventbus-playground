@@ -1,4 +1,6 @@
 package com.madrapps.eventbus.type
 
-class KotlinType {
+open class KotlinType {
 }
+
+class KotlinChildType : KotlinType()

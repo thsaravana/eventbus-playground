@@ -1,6 +1,7 @@
 package com.madrapps.eventbus
 
 import com.madrapps.eventbus.type.JavaType
+import com.madrapps.eventbus.type.KotlinChildType
 import com.madrapps.eventbus.type.KotlinType
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -17,6 +18,7 @@ class KotlinMain {
 
         bus.register(this)
         bus.post(KotlinType())
+        bus.post(KotlinChildType())
         bus.unregister(this)
     }
 
@@ -71,5 +73,10 @@ class KotlinMain {
     @Subscribe
     protected fun kotlinMethod8(type: JavaType) {
         println("kotlinMethod8 executed")
+    }
+
+    @Subscribe
+    fun kotlinMethod9(type: KotlinChildType) {
+        println("kotlinMethod9 executed")
     }
 }
