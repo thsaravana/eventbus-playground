@@ -1,5 +1,6 @@
 package com.madrapps.eventbus;
 
+import com.madrapps.eventbus.type.JavaChildType;
 import com.madrapps.eventbus.type.JavaType;
 import com.madrapps.eventbus.type.KotlinType;
 import org.greenrobot.eventbus.EventBus;
@@ -17,6 +18,7 @@ public class JavaMain {
 
         bus.register(this);
         bus.post(new JavaType());
+        bus.post(new JavaChildType());
         bus.unregister(this);
     }
 
@@ -72,6 +74,11 @@ public class JavaMain {
     @Subscribe
     protected void javaMethod8(KotlinType type) {
         System.out.println("javaMethod8 executed");
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void javaMethod9(JavaChildType type) {
+        System.out.println("javaMethod9 executed");
     }
 
 }
