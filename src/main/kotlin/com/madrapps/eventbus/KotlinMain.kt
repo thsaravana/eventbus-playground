@@ -15,10 +15,21 @@ class KotlinMain {
 
     fun post() {
         val bus = EventBus.getDefault()
+        val kotlinObject = KotlinObject()
 
         bus.register(this)
         bus.post(KotlinType())
         bus.post(KotlinChildType())
+        EventBus.getDefault().post(KotlinType())
+        bus.postSticky(KotlinType())
+        with(bus) {
+            post(KotlinType())
+            postSticky(KotlinType())
+        }
+        post(KotlinType())
+        postSticky(KotlinType())
+        kotlinObject.post(KotlinType())
+        kotlinObject.postSticky(KotlinType())
         bus.unregister(this)
     }
 
@@ -78,5 +89,13 @@ class KotlinMain {
     @Subscribe
     fun kotlinMethod9(type: KotlinChildType) {
         println("kotlinMethod9 executed")
+    }
+
+    fun post(type: KotlinType) {
+        println("Non EventBus post method")
+    }
+
+    fun postSticky(type: KotlinType) {
+        println("Non EventBus postSticky method")
     }
 }

@@ -7,6 +7,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import static org.greenrobot.eventbus.EventBus.getDefault;
+
 public class JavaMain {
 
     public static void main(String[] args) {
@@ -14,11 +16,18 @@ public class JavaMain {
     }
 
     private void post() {
-        final EventBus bus = EventBus.getDefault();
+        final EventBus bus = getDefault();
+        final JavaObject object = new JavaObject();
 
         bus.register(this);
         bus.post(new JavaType());
+        bus.postSticky(new JavaType());
         bus.post(new JavaChildType());
+        EventBus.getDefault().post(new JavaType());
+        post(new JavaType());
+        postSticky(new JavaType());
+        object.post(new JavaType());
+        object.postSticky(new JavaType());
         bus.unregister(this);
     }
 
@@ -81,4 +90,11 @@ public class JavaMain {
         System.out.println("javaMethod9 executed");
     }
 
+    public void post(JavaType type) {
+        System.out.println("Non EventBus post method");
+    }
+
+    public void postSticky(JavaType type) {
+        System.out.println("Non EventBus postSticky method");
+    }
 }
