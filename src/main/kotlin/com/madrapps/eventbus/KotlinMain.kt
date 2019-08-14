@@ -9,6 +9,7 @@ import org.greenrobot.eventbus.ThreadMode
 
 fun main() {
     KotlinMain().post()
+    KotlinMain().postTopLevel()
 }
 
 class KotlinMain {
@@ -30,6 +31,15 @@ class KotlinMain {
         postSticky(KotlinType())
         kotlinObject.post(KotlinType())
         kotlinObject.postSticky(KotlinType())
+        bus.unregister(this)
+    }
+
+    fun postTopLevel() {
+        val bus = EventBus.getDefault()
+        bus.register(this)
+        topLevelFunction(bus)
+        postExtension(bus)
+        bus.postType()
         bus.unregister(this)
     }
 
@@ -98,4 +108,21 @@ class KotlinMain {
     fun postSticky(type: KotlinType) {
         println("Non EventBus postSticky method")
     }
+}
+
+private fun topLevelFunction(bus: EventBus) {
+    bus.post(JavaType())
+    bus.post(KotlinType())
+}
+
+private fun KotlinMain.postExtension(bus: EventBus) {
+    bus.post(JavaType())
+    bus.post(KotlinType())
+}
+
+private fun EventBus.postType() {
+    this.post(JavaType())
+    this.post(KotlinType())
+    post(JavaType())
+    post(KotlinType())
 }
