@@ -1,6 +1,7 @@
 package com.madrapps.eventbus;
 
 import com.madrapps.eventbus.type.JavaChildType;
+import com.madrapps.eventbus.type.JavaEnumType;
 import com.madrapps.eventbus.type.JavaType;
 import com.madrapps.eventbus.type.KotlinType;
 import org.greenrobot.eventbus.EventBus;
@@ -24,6 +25,7 @@ public class JavaMain {
         bus.postSticky(new JavaType());
         bus.post(new JavaChildType());
         EventBus.getDefault().post(new JavaType());
+        bus.post(JavaEnumType.ONE);
         post(new JavaType());
         postSticky(new JavaType());
         object.post(new JavaType());
@@ -96,5 +98,10 @@ public class JavaMain {
 
     public void postSticky(JavaType type) {
         System.out.println("Non EventBus postSticky method");
+    }
+
+    @Subscribe
+    public void javaMethod10(JavaEnumType type) {
+        System.out.println("javaMethod10 executed");
     }
 }
