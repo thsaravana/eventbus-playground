@@ -8,6 +8,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import static com.madrapps.eventbus.type.JavaEnumType.*;
 import static org.greenrobot.eventbus.EventBus.getDefault;
 
 public class JavaMain {
@@ -25,6 +26,7 @@ public class JavaMain {
         bus.postSticky(new JavaType());
         bus.post(new JavaChildType());
         EventBus.getDefault().post(new JavaType());
+        bus.post(ONE);
         bus.post(JavaEnumType.ONE);
         post(new JavaType());
         postSticky(new JavaType());
