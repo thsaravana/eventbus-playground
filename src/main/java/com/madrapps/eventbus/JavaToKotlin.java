@@ -1,9 +1,6 @@
 package com.madrapps.eventbus;
 
-import com.madrapps.eventbus.type.JavaChildType;
-import com.madrapps.eventbus.type.JavaType;
-import com.madrapps.eventbus.type.KotlinChildType;
-import com.madrapps.eventbus.type.KotlinType;
+import com.madrapps.eventbus.type.*;
 import org.greenrobot.eventbus.EventBus;
 
 public class JavaToKotlin {
@@ -22,6 +19,7 @@ public class JavaToKotlin {
         bus.post(new JavaType());
         bus.post(new JavaChildType());
         bus.post(new KotlinChildType());
+        bus.post(KotlinEnumType.ONE);
         bus.unregister(kotlinMain);
     }
 }

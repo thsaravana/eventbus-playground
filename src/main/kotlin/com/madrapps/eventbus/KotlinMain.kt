@@ -2,6 +2,7 @@ package com.madrapps.eventbus
 
 import com.madrapps.eventbus.type.JavaType
 import com.madrapps.eventbus.type.KotlinChildType
+import com.madrapps.eventbus.type.KotlinEnumType
 import com.madrapps.eventbus.type.KotlinType
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -27,6 +28,7 @@ class KotlinMain {
             post(KotlinType())
             postSticky(KotlinType())
         }
+        bus.post(KotlinEnumType.ONE)
         post(KotlinType())
         postSticky(KotlinType())
         kotlinObject.post(KotlinType())
@@ -107,6 +109,11 @@ class KotlinMain {
 
     fun postSticky(type: KotlinType) {
         println("Non EventBus postSticky method")
+    }
+
+    @Subscribe
+    fun kotlinMethod10(type: KotlinEnumType) {
+        println("kotlinMethod10 executed")
     }
 }
 
