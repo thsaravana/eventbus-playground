@@ -21,7 +21,10 @@ class KotlinMain {
         val kotlinObject = KotlinObject()
 
         bus.register(this)
-        bus.post(KotlinType())
+        bus
+            .post (
+                KotlinType()
+            )
         bus.post(KotlinChildType())
         EventBus.getDefault().post(KotlinType())
         bus.postSticky(KotlinType())

@@ -22,8 +22,14 @@ public class JavaMain {
         final JavaObject object = new JavaObject();
 
         bus.register(this);
-        bus.post(new JavaType());
-        bus.postSticky(new JavaType());
+        bus
+                .post
+                        (new
+                                JavaType());
+        bus
+                .postSticky
+                        (new
+                                JavaType());
         bus.post(new JavaChildType());
         EventBus.getDefault().post(new JavaType());
         bus.post(ONE);
@@ -39,7 +45,12 @@ public class JavaMain {
     // 2. There should be only 1 parameter
     // 3. Can have return type
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void javaMethod(JavaType type) {
+    public
+    void
+    javaMethod
+    (
+            JavaType type
+    ) {
         System.out.println("javaMethod executed");
     }
 
