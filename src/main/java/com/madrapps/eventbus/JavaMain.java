@@ -1,9 +1,6 @@
 package com.madrapps.eventbus;
 
-import com.madrapps.eventbus.type.JavaChildType;
-import com.madrapps.eventbus.type.JavaEnumType;
-import com.madrapps.eventbus.type.JavaType;
-import com.madrapps.eventbus.type.KotlinType;
+import com.madrapps.eventbus.type.*;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -34,6 +31,7 @@ public class JavaMain {
         EventBus.getDefault().post(new JavaType());
         bus.post(ONE);
         bus.post(JavaEnumType.ONE);
+        bus.post(JavaInnerEnum.EnumType.ONE);
         post(new JavaType());
         postSticky(new JavaType());
         object.post(new JavaType());
@@ -116,5 +114,10 @@ public class JavaMain {
     @Subscribe
     public void javaMethod10(JavaEnumType type) {
         System.out.println("javaMethod10 executed");
+    }
+
+    @Subscribe
+    public void javaMethod11(JavaInnerEnum.EnumType type) {
+        System.out.println("javaMethod11 executed");
     }
 }
