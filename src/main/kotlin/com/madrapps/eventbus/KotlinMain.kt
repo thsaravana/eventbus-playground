@@ -1,10 +1,7 @@
 package com.madrapps.eventbus
 
-import com.madrapps.eventbus.type.JavaType
-import com.madrapps.eventbus.type.KotlinChildType
-import com.madrapps.eventbus.type.KotlinEnumType
+import com.madrapps.eventbus.type.*
 import com.madrapps.eventbus.type.KotlinEnumType.*
-import com.madrapps.eventbus.type.KotlinType
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -34,6 +31,7 @@ class KotlinMain {
         }
         bus.post(KotlinEnumType.ONE)
         bus.post(ONE)
+        bus.post(KotlinInnerEnum.EnumType.ONE)
         post(KotlinType())
         postSticky(KotlinType())
         kotlinObject.post(KotlinType())
@@ -119,6 +117,11 @@ class KotlinMain {
     @Subscribe
     fun kotlinMethod10(type: KotlinEnumType) {
         println("kotlinMethod10 executed")
+    }
+
+    @Subscribe
+    fun kotlinMethod11(type: KotlinInnerEnum.EnumType) {
+        println("kotlinMethod11 executed")
     }
 }
 
