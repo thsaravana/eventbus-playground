@@ -21,6 +21,7 @@ class KotlinToJava {
         bus.post(KotlinChildType())
         bus.post(ONE)
         bus.post(JavaEnumType.ONE)
+        bus.post(JavaInnerEnum.EnumType.ONE)
         bus.unregister(javaMain)
     }
 }

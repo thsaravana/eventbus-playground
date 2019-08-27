@@ -23,6 +23,7 @@ public class JavaToKotlin {
         bus.post(new KotlinChildType());
         bus.post(KotlinEnumType.ONE);
         bus.post(ONE);
+        bus.post(KotlinInnerEnum.EnumType.ONE);
         bus.unregister(kotlinMain);
     }
 }
